@@ -1,0 +1,31 @@
+<div *ngIf="!car">
+  Car View Page [userid:{{userid}}] [carid:{{carid}}]
+</div>
+<div *ngIf="car">
+  <div>
+    Make: {{(car)?.make}}
+  </div>
+  <div>
+    Model: {{(car)?.model}}
+  </div>
+  <div>
+    Vin: {{(car)?.vin}}
+  </div>
+  <div style="height: 400px; width: 500px;">
+    <carousel>
+      <slide *ngFor="let photo_key of iterablePhotos()">
+        <div style="text-align: center; height: 400px; width: 500px;">
+          <img *ngIf="car.photos[photo_key]" [src]="car.photos[photo_key].url" alt="Car Photo" style="max-height: 100%; max-width: 100%; position: absolute; top: 50%; left: 50%; transform: translate(-50%,-50%);">
+        </div>
+      </slide>
+    </carousel>
+    <br />
+    <div class="container" style="background-color: lightgrey;">
+      <span *ngFor="let photo_key of iterablePhotos()">
+        <div style="display: inline;">
+          <img *ngIf="car.photos[photo_key]" [src]="car.photos[photo_key].url" alt="Car Photo" style="max-height: 100px; max-width: 100px;">
+        </div>
+      </span>
+    </div>
+  </div>
+</div>

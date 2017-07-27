@@ -1,0 +1,17 @@
+<h1>Cars</h1>
+
+<p>Make/View/Edit Your Cars Here</p>
+<p style="color: red;">*While there is no indication, files will be uploading, please wait until you see all photos you attempted to upload</p>
+
+<div *ngFor="let car of cars | async" class="card">
+  <car-detail [car]='car'></car-detail>
+</div>
+
+<loading-spinner *ngIf="showSpinner"></loading-spinner>
+
+
+<!-- <button type="button" class="button is-danger" (click)='deleteItems()'>Delete All Cars</button> -->
+
+<hr>
+
+<car-form></car-form>

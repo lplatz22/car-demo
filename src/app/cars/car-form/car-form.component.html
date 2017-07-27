@@ -1,0 +1,30 @@
+<h3>New Car Form</h3>
+
+    <label class="label">Make: </label>
+    <input placeholder="Car Make" class="input" [(ngModel)]="car.make" required minlength="2" maxlength="23" #make='ngModel' autofocus>
+    <label class="label">Model: </label>
+    <input placeholder="Car Model" class="input" [(ngModel)]="car.model" required minlength="2" maxlength="23" #model='ngModel'>
+    <label class="label">Vin #: </label>
+    <input placeholder="Car Vin #" class="input" [(ngModel)]="car.vin" required minlength="2" maxlength="23" #vin='ngModel'>
+    <label class="label">Description: </label>
+    <input placeholder="Car Description" class="input" [(ngModel)]="car.description" required minlength="2" maxlength="1000" #desc='ngModel'>
+    <!-- <label class="label">Photos: </label>
+    <input type="file" class="button" (change)="detectFiles($event)" multiple > -->
+
+    <div *ngIf="make.dirty && model.dirty && vin.dirty && desc.dirty">
+      <span *ngIf='(make.errors || model.errors || vin.errors || desc.errors); then errors else valid'>template renders here...</span>
+    </div>
+
+    <button class="button is-primary" (click)='createCar()'
+      [disabled]="!make.valid || !model.valid || !vin.valid || !desc.valid">
+      Create Car
+    </button>
+
+
+<ng-template #valid>
+  <p class="help is-success">looks good!</p>
+</ng-template>
+
+<ng-template #errors>
+  <p class="help is-danger">form contains errors!</p>
+</ng-template>

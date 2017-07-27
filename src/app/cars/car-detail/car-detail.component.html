@@ -1,0 +1,28 @@
+<h3>
+  <img *ngIf="car.keyPhoto" [src]="car.keyPhoto.url" alt="Car Key Photo" height="100" width="100"> {{ (car)?.make || '[Make]' }} {{ (car)?.model || '[Model]' }}
+</h3>
+
+
+<div class="card-content">
+  <span *ngFor="let photo_key of iterablePhotos()">
+    <img *ngIf="car.photos[photo_key]" [src]="car.photos[photo_key].url" alt="Car Photo" height="40" width="40">
+    <button class="button is-small is-danger" (click)="deletePhoto(photo_key)">Delete</button>
+    <br />
+  </span>
+
+  Vin# :{{ (car)?.vin }}<br>
+  {{ (car)?.description}}
+  <br />
+  iFrame: <br />{{iframe_text}}
+  <br />
+  <br />
+  Check Iframe by going <a href="https://www.w3schools.com/tags/tryit.asp?filename=tryhtml_iframe" target="_blank">here</a> and replacing whats in the iframe with the iframe text above ^
+</div>
+
+<div class="card-footer">
+  <label>
+     <input type="file" class="button" (change)="detectFiles($event)" accept="image/*" multiple>
+  </label>
+  <button class="button is-small is-info card-footer-item" [disabled]="!selectedFiles" (click)='uploadPhotos()'>Add Photos</button>
+  <span class="button is-small is-danger card-footer-item" (click)='deleteItem()'>Delete</span>
+</div>

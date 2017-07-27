@@ -1,0 +1,40 @@
+<nav class="nav">
+  <div class="nav-left">
+    <a class="nav-item" routerLink="/">
+      <img src="assets/images/angularfirebase.png" width="30px" alt="Firestarter Angular4 Demo App"/> Luke's Sample App
+    </a>
+  </div>
+
+  <div class="nav-center">
+      <span class="nav-item">Luke's Sample App</span>
+  </div>
+
+  <!-- This "nav-toggle" hamburger menu is only visible on mobile -->
+  <!-- You need JavaScript to toggle the "is-active" class on "nav-menu" -->
+  <span class="nav-toggle" (click)="toggleCollapse()" [ngClass]="{'is-active': show}">
+    <span></span>
+    <span></span>
+    <span></span>
+  </span>
+
+  <!-- This "nav-menu" is hidden on mobile -->
+  <!-- Add the modifier "is-active" to display it on mobile -->
+  <div class="nav-right nav-menu" [ngClass]="{'is-active': show}">
+    <a class="nav-item" routerLink="/cars">
+      Cars
+    </a>
+    <!-- <a class="nav-item" routerLink="/items">
+      Items
+    </a>
+    <a class="nav-item" routerLink="/uploads">
+      Uploads
+    </a> -->
+    <a *ngIf="!auth.currentUser" class="nav-item" routerLink="/login">
+      Login
+    </a>
+    <a *ngIf="auth.currentUser" (click)="logout()" class="nav-item">
+      Logout {{ auth.currentUserDisplayName }}
+      <img align="right" style="border-radius: 50%; margin-left: 10px;" [src]="auth.currentUser.photoURL || 'https://api.adorable.io/avatars/109/fire.png'">
+    </a>
+  </div>
+</nav>

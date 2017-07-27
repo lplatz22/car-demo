@@ -1,0 +1,17 @@
+<h2>Sample Dealer Page</h2>
+
+<div>
+  Here is some dealer info [id: {{carid}}]
+</div>
+<br />
+
+<div class="card">
+  Make: {{(car)?.make}}<br />
+  Model: {{(car)?.model}}<br />
+  Vin: {{(car)?.vin}}
+</div>
+
+<div *ngIf="!car">
+  **Car Not Found with that ID**
+</div>
+{{iframe_text}}
